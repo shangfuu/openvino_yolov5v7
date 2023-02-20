@@ -1,0 +1,16 @@
+=2.0
+
+datasets/
+coco/
+coco_dataset/
+
+*.zip
+
+public/
+results/
+
+yolov5/
+yolov7/
+yolov4/
+
+__pycache__

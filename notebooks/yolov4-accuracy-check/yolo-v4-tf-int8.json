@@ -1,0 +1,21 @@
+{
+    "model": {
+        "model_name": "yolo-v4-tf",
+        "model": "/home/ease/repos/openvino_notebooks/notebooks/227-yolov4-accuracy-check/yolov4/public/yolo-v4-tf/FP16/yolo-v4-tf.xml",
+        "weights": "/home/ease/repos/openvino_notebooks/notebooks/227-yolov4-accuracy-check/yolov4/public/yolo-v4-tf/FP16/yolo-v4-tf.bin"
+    },
+    "engine": {
+        "config": "/home/ease/repos/openvino_notebooks/notebooks/227-yolov4-accuracy-check/yolo-v4-tf-int8.yml"
+    },
+    "compression": {
+        "algorithms": [
+            {
+                "name": "DefaultQuantization",
+                "params": {
+                    "preset": "performance",
+                    "stat_subset_size": 300
+                }
+            }
+        ]
+    }
+}
