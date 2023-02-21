@@ -1,12 +1,20 @@
 # OpenVINO Notebooks
 
-## Build and Run Docker Container
-### 1. Use the setup.sh
+>OS: Ubuntu 20.04.5 LTS\
+OpenVINO: 2022.3\
+Python: 3.8.13\
+CPU: 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz\
+Memory: 16 GB\
+
+
+## Installation Guide
+### Build and Run Docker Container
+#### 1. Use the setup.sh
 ```bash=
 bash setup.sh
 ```
 
-### 2. Use the Command below
+#### 2. Use the Command below
 ```bash=
 docker build -t openvino:2022.3 .
 ```
@@ -20,17 +28,31 @@ docker run --device /dev/dri:/dev/dri \
             --name yolo openvino:2022.3
 ```
 
-## Run after the Container is Build
+### Run after the Container is Build
 
 ```bash=
 docker start yolo -ai
 ```
 
+### Using Local Machine
+
+```bash=
+pip install -r requirements.txt
+```
+
+## Getting Started
+
+- [compare_YOLOv7_vs_YOLOv5](./notebooks/yolov5v7/compare_YOLOv7_vs_YOLOv5.ipynb)
+- [yolov5-nncf-optimization](./notebooks/yolov5v7/yolov5-nncf-optimization.ipynb)
+- [yolov5-pot-optimization](./notebooks/yolov5v7/yolov5-pot-optimization.ipynb)
+- [yolov7-optimization](./notebooks/yolov5v7/yolov7-optimization.ipynb)
+
+
 ## Benchmark (fps)
 
 |              | FP32 CPU | FP16 CPU | INT8 CPU | FP32 GPU | FP16 GPU | INT8 GPU |
 | :----------- | :------- | :------- | :------- | :------- | :------- | :------- |
-| YOLOv7       | 3.14     | 3.66     | 10.05    | 4.09     | 10.43    | 20.73    |
+| YOLOv7 NNCF  | 3.14     | 3.66     | 10.05    | 4.09     | 10.43    | 20.73    |
 | YOLOv5m NNCF | 6.50     | 6.89     | 19.24    | 12.69    | 28.29    | 41.90    |
 | YOLOv5m POT  | 6.60     | 5.92     | 21.98    | 12.27    | 24.06    | 41.07    |
 
@@ -40,10 +62,13 @@ docker start yolo -ai
 |                   | Class | Images | Labels | Precision | Recall | mAP50 | mAP   |
 | :---------------- | :---- | :----- | :----- | :-------- | :----- | :---- | :---- |
 | YOLOv7 NNCF FP32  | all   | 5000   | 36335  | 0.718     | 0.638  | 0.689 | 0.495 |
+| YOLOv7 NNCF FP16  | all   | 128    | 36335  | 0.725     | 0.634  | 0.689 | 0.493 |
 | YOLOv7 NNCF INT8  | all   | 5000   | 36335  | 0.715     | 0.639  | 0.688 | 0.491 |
 | YOLOv5m NNCF FP32 | all   | 5000   | 36335  | 0.714     | 0.580  | 0.633 | 0.448 |
+| YOLOv5m NNCF FP16 | all   | 128    | 36335  | 0.714     | 0.580  | 0.633 | 0.448 |
 | YOLOv5m NNCF INT8 | all   | 5000   | 36335  | 0.714     | 0.575  | 0.631 | 0.443 |
 | YOLOv5m POT FP32  | all   | 5000   | -      | -         | -      | 0.632 | 0.447 |
+| YOLOv5m POT FP16  | all   | 5000   | -      | -         | -      | 0.632 | 0.447 |
 | YOLOv5m POT INT8  | all   | 5000   | -      | -         | -      | 0.630 | 0.441 |
 
 ## COCO 128 train 2017 mAP
@@ -52,8 +77,11 @@ Download from "https://ultralytics.com/assets/coco128.zip"
 |                   | Class | Images | Labels | Precision | Recall | mAP50 | mAP   |
 | :---------------- | :---- | :----- | :----- | :-------- | :----- | :---- | :---- |
 | YOLOv7 NNCF FP32  | all   | 128    | 929    | 0.821     | 0.703  | 0.812 | 0.612 |
+| YOLOv7 NNCF FP16  | all   | 128    | 929    | 0.822     | 0.703  | 0.812 | 0.609 |
 | YOLOv7 NNCF INT8  | all   | 128    | 929    | 0.794     | 0.730  | 0.811 | 0.606 |
 | YOLOv5m NNCF FP32 | all   | 128    | 929    | 0.726     | 0.687  | 0.769 | 0.554 |
+| YOLOv5m NNCF FP16 | all   | 128    | 929    | 0.726     | 0.686  | 0.769 | 0.554 |
 | YOLOv5m NNCF INT8 | all   | 128    | 929    | 0.743     | 0.677  | 0.767 | 0.545 |
 | YOLOv5m POT FP32  | all   | 128    | 929    | -         | -      | 0.768 | 0.554 |
+| YOLOv5m POT FP16  | all   | 128    | 929    | -         | -      | 0.768 | 0.553 |
 | YOLOv5m POT INT8  | all   | 128    | 929    | -         | -      | 0.767 | 0.545 |
