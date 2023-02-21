@@ -3,6 +3,7 @@
 datasets/
 coco/
 coco_dataset/
+coco128/
 
 *.zip
 
