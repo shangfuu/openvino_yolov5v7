@@ -1,12 +1,14 @@
 # OpenVINO Notebooks
 
+## Build and Run Docker Container
+### 1. Use the setup.sh
 ```bash=
-docker built -t openvino_notebooks .
-docker build -t openvino:2022.3 .
+bash setup.sh
 ```
 
+### 2. Use the Command below
 ```bash=
-docker run -it -p 8887:8887 --shm-size 8G --name yolo openvino_notebooks
+docker build -t openvino:2022.3 .
 ```
 
 ```bash=
@@ -17,6 +19,8 @@ docker run --device /dev/dri:/dev/dri \
             -it -p 8888:8888 --shm-size 8G -v $(pwd):/opt/app-root/ \ 
             --name yolo openvino:2022.3
 ```
+
+## Run after the Container is Build
 
 ```bash=
 docker start yolo -ai
