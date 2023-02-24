@@ -8,13 +8,18 @@ Memory: 16 GB\
 
 
 ## Installation Guide
-### Build and Run Docker Container
-#### 1. Use the setup.sh
+We provide two ways to build the environment.
+
+### 1. Build Docker Image and Container
+
+There are two ways to build and run the software:
+
+1. Run the setup.sh script by executing the following command in the terminal:
 ```bash=
 bash setup.sh
 ```
 
-#### 2. Use the Command below
+2. Alternatively, you can build and run the software using Docker. To do this, first build the Docker image by executing the following command:
 ```bash=
 docker build -t openvino:2022.3 .
 ```
@@ -28,13 +33,17 @@ docker run --device /dev/dri:/dev/dri \
             --name yolo openvino:2022.3
 ```
 
-### Run after the Container is Build
+This command will start a Docker container named "yolo" and configure it to use the necessary hardware and software resources. Once the container is running, you can interact with it using the specified ports and volumes.
+
+Once the image has been built, you can run it using the following command:
 
 ```bash=
 docker start yolo -ai
 ```
 
-### Using Local Machine
+This command will start the existing container named "yolo" and attach to it interactively.
+
+### 2. Using Local Machine
 
 ```bash=
 pip install -r requirements.txt
